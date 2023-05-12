@@ -7,8 +7,8 @@
         <div class="col-12 col-md-6"><em>Relevant image</em></div>
     </header>
 
-    <section class="row mt-2 py-1 h4 text-center">
-        <div class="col-12">How it works</div>
+    <section class="row mt-2 py-1 text-center">
+        <div class="col-12 h4">How it works</div>
     </section>
     <section class="d-lg-flex flex-row">
         <div class="col-12 col-lg-4"><em>Relevant image</em> <br> Push and pull info with our API</div>
@@ -21,9 +21,9 @@
         <div class="col-12 col-md-6"><em>Relevant image</em></div>
     </section>
 
-    <section class="row mt-2 py-1 h4 text-center">
-        <div class="col-12">Ready to get started?</div>
-        <div class="col-6 mt-3 mx-auto"><a href="#" class="btn btn-primary w-100 py-3">Get API Key</a></div> <!--ADD LINK TO PROFILE HERE-->
+    <section class="row mt-2 py-1 text-center">
+        <div class="col-12 h4">Ready to get started?</div>
+        <div class="col-6 mt-3 mx-auto"><a href="{% if current_user.is_authenticated %}{{ url_for('site.profile') }}{% else %}{{ url_for('auth.signup') }}{% endif %}" class="btn btn-primary w-100 py-3">Get API Key</a></div>
     </section>
 
     <footer>

@@ -6,6 +6,6 @@ site = Blueprint('site', __name__, template_folder='site_templates')
 def landing():
     return render_template('index.html')
 
-# @site.route('/profile')
-# def profile():
-#     return render_template('profile.html')
+@site.route('/profile')
+def profile():
+    return render_template('profile.html')
