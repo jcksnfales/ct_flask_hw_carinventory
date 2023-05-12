@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="../static/css/style.css">
+<title>Car Inventory</title>
+</head>
+<body class="bg-dark text-white" style="padding-top:85px;">
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
+        <div class="container w-75">
+            <a href="#" class="navbar-brand">Car Inventory API</a>
+            <button class="navbar-toggler my-1" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto ps-2 me-2">
+                    <li class="nav-item">
+                        <a href="#" class="nav-item nav-link">Home</a>
+                    </li>
+                    <li class="nav-item"> <!-- only show if the user is logged in -->
+                        <a href="#" class="nav-item nav-link">Profile</a>
+                    </li>
+                </ul>
+                <a href="#" class="btn btn-primary text-white nav-link my-2">Sign In</a>
+            </div>
+        </div>
+    </nav>
+    <!-- jinja content injection -->
+    <!-- {% block content %} -->
+    <!-- {% endblock content %} -->
+    <div class="container w-75" id="page-content">
+        <header class="d-md-flex flex-row-reverse">
+            <div class="col-12 col-md-6 bg-danger"><strong>Catalog your car collection with us!</strong> <br> A convenient API solution for all your car-cataloguing needs</div>
+            <div class="col-12 col-md-6 bg-warning"><em>Relevant image</em></div>
+        </header>
+        <section class="d-md-flex flex-row">
+            <div class="col-12 bg-primary"><strong>How it works</strong></div>
+        </section>
+        <section class="d-lg-flex flex-row">
+            <div class="col-12 col-lg-4 bg-danger"><em>Relevant image</em> <br> Push and pull info with our API</div>
+            <div class="col-12 col-lg-4 bg-success"><em>Relevant image</em> <br> Data stored persistently with SQL</div>
+            <div class="col-12 col-lg-4 bg-danger"><em>Relevant image</em> <br> Secured with token verification</div>
+        </section>
+        <section class="d-md-flex flex-row">
+            <div class="col-12 col-md-6 bg-primary"><strong>Got questions?</strong> <br> Get in touch on our Slack channel!</div>
+            <div class="col-12 col-md-6 bg-warning"><em>Relevant image</em></div>
+        </section>
+        <footer>
+            <div class="row">
+                <div class="col-4 bg-success"><em>Footer stuff</em></div>
+                <div class="col-4 bg-danger"><em>Footer stuff</em></div>
+                <div class="col-4 bg-success"><em>Footer stuff</em></div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center bg-primary">&copy; 2023 Jackson Fales</div>
+            </div>
+        </footer>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>
