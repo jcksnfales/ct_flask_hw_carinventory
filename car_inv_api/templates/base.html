@@ -30,45 +30,8 @@
         </div>
     </nav>
     <!-- jinja content injection -->
-    <!-- {% block content %} -->
-    <!-- {% endblock content %} -->
-    <div class="container w-75" id="page-content">
-        <header class="d-md-flex flex-row-reverse">
-            <div class="col-12 col-md-6"><strong>Catalog your car collection with us!</strong> <br> A convenient API solution for all your car-cataloguing needs</div>
-            <div class="col-12 col-md-6"><em>Relevant image</em></div>
-        </header>
-
-        <section class="row mt-2 py-1 h4 text-center">
-            <div class="col-12">How it works</div>
-        </section>
-        <section class="d-lg-flex flex-row">
-            <div class="col-12 col-lg-4"><em>Relevant image</em> <br> Push and pull info with our API</div>
-            <div class="col-12 col-lg-4"><em>Relevant image</em> <br> Data stored persistently with SQL</div>
-            <div class="col-12 col-lg-4"><em>Relevant image</em> <br> Secured with token verification</div>
-        </section>
-
-        <section class="d-md-flex flex-row">
-            <div class="col-12 col-md-6"><strong>Got questions?</strong> <br> Get in touch on our Slack channel!</div>
-            <div class="col-12 col-md-6"><em>Relevant image</em></div>
-        </section>
-
-        <section class="row mt-2 py-1 h4 text-center">
-            <div class="col-12">Ready to get started?</div>
-            <div class="col-6 mt-3 mx-auto"><a href="#" class="btn btn-primary w-100 py-2">Get API Key</a></div> <!--ADD LINK TO PROFILE HERE-->
-        </section>
-
-        <footer>
-            <div class="row mt-3 text-secondary">
-                <div class="col-4"><em>Footer stuff</em></div>
-                <div class="col-4"><em>Footer stuff</em></div>
-                <div class="col-4"><em>Footer stuff</em></div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-12 text-center text-secondary">&copy; 2023 Jackson Fales</div>
-            </div>
-        </footer>
-    </div>
-
+    {% block content %}
+    {% endblock content %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
 </body>
