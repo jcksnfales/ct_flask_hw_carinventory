@@ -21,7 +21,7 @@ def signup():
             db.session.commit()
 
             flash(f'You have successfully created a user account {email}', 'User-created')
-            return redirect(url_for('site.home'))
+            return redirect(url_for('site.landing'))
     except:
         raise Exception('Invalid form data: Please check your form')
     return render_template('sign_up.html', form=form)
@@ -39,7 +39,7 @@ def signin():
             logged_user = User.query.filter(User.email == email).first()
             if logged_user and check_password_hash(logged_user.password, password):
                 login_user(logged_user)
-                flash('You were successful in your initiation. Congratulations, and welcome to the Jedi Knights', 'auth-success')
+                flash('Authentication success', 'auth-success')
                 return redirect(url_for('site.profile'))
             else:
                 flash('You do not have access to this content.', 'auth-failed')
@@ -51,4 +51,4 @@ def signin():
 @auth.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('site.home'))
+    return redirect(url_for('site.landing'))

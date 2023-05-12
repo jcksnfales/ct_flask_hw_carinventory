@@ -19,16 +19,17 @@
             <div class="collapse navbar-collapse" id="navmenu">
                 <ul class="navbar-nav ms-auto ps-2 me-2">
                     <li class="nav-item">
-                        <a href="#" class="nav-item nav-link">Home</a>
+                        <a href="{{ url_for('site.landing') }}" class="nav-item nav-link">Home</a>
                     </li>
                 {% if current_user.is_authenticated %}
                     <li class="nav-item"> <!-- only show if the user is logged in -->
-                        <a href="#" class="nav-item nav-link">Profile</a>
+                        <a href="{{ url_for('site.profile') }}" class="nav-item nav-link">Profile</a>
                     </li>
                 </ul>
+                <a href="{{ url_for('auth.logout') }}" class="btn btn-danger text-white nav-link my-2" style=".active { text-color: white; }">Sign Out</a>
                 {% else %}
                 </ul>
-                <a href="#" class="btn btn-primary text-white nav-link my-2">Sign In</a>
+                <a href="{{ url_for('auth.signin') }}" class="btn btn-primary text-white nav-link my-2">Sign In</a>
                 {% endif %}
             </div>
         </div>
