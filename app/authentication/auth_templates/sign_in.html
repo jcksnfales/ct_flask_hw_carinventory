@@ -7,7 +7,22 @@
             <div class="row mt-2 py-1 text-center">
                 <div class="col-12 h4">Sign In</div>
             </div>
-            {% include 'forms.html' %}
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                <div class="form-group my-2">
+                    <!-- EMAIL -->
+                    <fieldset id="email-field">
+                        <small class="ms-1 mb-1 text-secondary">{{ form.email.label }}</small>
+                        {{ form.email(class = 'form-control', placeholder = 'email address') }}
+                    </fieldset>
+                    <!-- PASSWORD -->
+                    <fieldset id="pass-field">
+                        <small class="ms-1 mb-1 text-secondary">{{ form.password.label }}</small>
+                        {{ form.password(class = 'form-control', placeholder = 'password') }}
+                    </fieldset>
+                </div>
+                <div class="col-6 mx-auto">{{ form.submit_button(class = 'btn btn-primary btn-block mt-3 w-100') }}</div>
+            </form>
         </aside>
         <a href="{{ url_for('auth.signup') }}" class="text-secondary text-center mt-3"><em>I don't have an account</em></a>
     </div>
