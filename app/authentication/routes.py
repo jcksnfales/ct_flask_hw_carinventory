@@ -19,7 +19,7 @@ def signup():
             db.session.add(user)
             db.session.commit()
 
-            flash(f'You have successfully created a user account {email}', 'User-created')
+            flash(f'Successfully registered user "{email}"', category='auth-register-success')
             return redirect(url_for('auth.signin'))
         # elif request.method == 'POST' and not form.validate_on_submit():
         #     print(form.password.errors[0])
@@ -40,10 +40,10 @@ def signin():
             logged_user = User.query.filter(User.email == email).first()
             if logged_user and check_password_hash(logged_user.password, password):
                 login_user(logged_user)
-                flash('Authentication success', 'auth-success')
+                flash('Successfully logged in.', 'auth-login-success')
                 return redirect(url_for('site.profile'))
             else:
-                flash('You do not have access to this content.', 'auth-failed')
+                flash('Login failed.', category='auth-login-failed')
                 return redirect(url_for('auth.signin'))
     except:
         raise Exception('Invalid Form Data: Please Check your Form')
