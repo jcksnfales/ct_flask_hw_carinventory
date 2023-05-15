@@ -8,6 +8,8 @@
             <header class="row mt-2 py-1 text-center">
                 <div class="col-12 h4">Sign In</div>
             </header>
+            <!-- FLASHED MESSAGES -->
+            {% include 'flashes.html' %}
             <!-- FORM CONTENT -->
             <form method="POST">
                 {{ form.hidden_tag() }}

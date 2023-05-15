@@ -1,0 +1,17 @@
+{% with flashes = get_flashed_messages(with_categories=True) %}
+    <!-- if flashes are found, create an unordered list to contain them -->
+    {% if flashes %}
+        <ul>
+        <!-- loop through the given flashes, creating list items with the correct colors for their category -->
+        {% for category, message in flashes %}
+            {% if category contains 'success' %}
+            <li class="text-success">{{ message }}</li>
+            {% elif category contains 'fail' %}
+            <li class="text-danger">{{ message }}</li>
+            {% else %}
+            <li class="text-secondary">{{ message }}</li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}

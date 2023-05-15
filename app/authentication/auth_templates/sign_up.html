@@ -4,9 +4,13 @@
 <main class="container">
     <div class="row">
         <aside class="col-6 col-sm-7 col-md-6 col-lg-5 mx-auto">
-            <div class="row mt-2 py-1 text-center">
+            <!-- HEADER TEXT -->
+            <header class="row mt-2 py-1 text-center">
                 <div class="col-12 h4">Sign Up</div>
-            </div>
+            </header>
+            <!-- FLASHED MESSAGES -->
+            {% include 'flashes.html' %}
+            <!-- FORM CONTENT -->
             <form method="POST">
                 {{ form.hidden_tag() }}
                 <div class="form-group my-2">
@@ -15,6 +19,10 @@
                         <small class="ms-1 mb-1 text-secondary">{{ form.email.label }}</small>
                         {{ form.email(class = 'form-control', placeholder = 'email address') }}
                     </fieldset>
+                        <!-- EMAIL VALIDATION ERROR -->
+                        {% if form.email.errors %}
+                        <div class="ms-1 text-danger"><em>{{ form.email.errors[0] }}</em></div>
+                        {% endif %}
                     <!-- PASSWORD -->
                     <fieldset id="pass-field">
                         <small class="ms-1 mb-1 text-secondary">{{ form.password.label }}</small>
@@ -25,12 +33,12 @@
                         <small class="ms-1 mb-1 text-secondary">{{ form.password_confirm.label }}</small>
                         {{ form.password_confirm(class = 'form-control', placeholder = 'confirm password') }}
                     </fieldset>
-                    
+                        <!-- PW VALIDATION ERROR -->
+                        {% if form.password.errors %}
+                        <div class="ms-1 text-danger"><em>{{ form.password.errors[0] }}</em></div>
+                        {% endif %}
                 </div>
-                <!-- ERRORS -->
-                {% if form.password.errors %}
-                    <div class="mt-3 text-center text-danger">{{ form.password.errors[0] }}</div>
-                {% endif %}
+                <!-- SUBMIT BUTTON -->
                 <div class="col-6 mx-auto">{{ form.submit_button(class = 'btn btn-primary btn-block mt-3 w-100') }}</div>
             </form>
         </aside>
