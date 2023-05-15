@@ -3,8 +3,9 @@
 {% block content %}
 <div class="container w-75" id="page-content">
     <header class="row mt-2 py-1 text-center">
-        <div class="col-12 h4">User Info</div>
+        <div class="col-12 px-0 h4">User Info</div>
     </header>
+    {% include 'flashes.html' %}
     <section class="row">
         <ul class="list-group col-12 col-md-10 col-lg-8 col-xl-7 mx-auto">
             <li class="list-group-item"><strong>Email:</strong> {{ current_user.email }}</li>
