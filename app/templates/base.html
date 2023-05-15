@@ -26,7 +26,7 @@
                         <a href="{{ url_for('site.profile') }}" class="nav-item nav-link">Profile</a>
                     </li>
                 </ul>
-                <a href="{{ url_for('auth.logout') }}" class="btn btn-danger text-white nav-link my-2" style=".active { text-color: white; }">Sign Out</a>
+                <a href="{{ url_for('auth.logout') }}" class="btn btn-danger text-white nav-link my-2">Sign Out</a>
                 {% else %}
                 </ul>
                 <a href="{{ url_for('auth.signin') }}" class="btn btn-primary text-white nav-link my-2">Sign In</a>
