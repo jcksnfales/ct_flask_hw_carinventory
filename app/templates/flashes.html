@@ -1,6 +1,6 @@
 {% with flashes = get_flashed_messages(with_categories=True) %}
     {% if flashes %}
-        <ul class="text-center list-unstyled"> 
+        <ul class="text-center list-unstyled mb-0 mt-1"> 
         {% for category, message in flashes %}
             {% if 'success' in category %}
             <li class="text-success">{{ message }}</li>
