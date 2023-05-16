@@ -8,14 +8,13 @@ api = Blueprint('api',__name__, url_prefix='/api')
 @api.route('/cars', methods=['POST'])
 @token_required
 def add_car(current_user_token):
-    user_token = current_user_token.token
     nickname = request.json['nickname']
     make = request.json['make']
     model = request.json['model']
     prodyear = request.json['prodyear']
     mileage = request.json['mileage']
 
-    new_car = Car(nickname, make, model, prodyear, mileage, user_token=user_token)
+    new_car = Car(current_user_token.token, nickname, make, model, prodyear, mileage)
 
     db.session.add(new_car)
     db.session.commit()
@@ -26,6 +25,5 @@ def add_car(current_user_token):
 @api.route('/cars', methods=['GET'])
 @token_required
 def get_contact(current_user_token):
-    user_token = current_user_token.token
-    cars = Car.query.filter_by(user_token=user_token).all()
+    cars = Car.query.filter_by(user_token=current_user_token.token).all()
     return jsonify(cars_schema.dump(cars))

@@ -20,11 +20,11 @@ def load_user(user_id):
 class User(db.Model, UserMixin):
     id = db.Column(db.String, primary_key=True)
     first_name = db.Column(db.String(150), nullable=True, default='')
-    last_name = db.Column(db.String(150), nullable = True, default = '')
-    email = db.Column(db.String(150), nullable = False)
-    password = db.Column(db.String, nullable = True, default = '')
-    token = db.Column(db.String, default = '', unique = True )
-    date_created = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
+    last_name = db.Column(db.String(150), nullable=True, default='')
+    email = db.Column(db.String(150), nullable=False)
+    password = db.Column(db.String, nullable=True, default = '')
+    token = db.Column(db.String, default='', unique=True )
+    date_created = db.Column(db.DateTime, nullable=False, default = datetime.utcnow)
 
     def __init__(self, email, first_name='', last_name='', password='', token=''):
         self.id = self.set_id()
@@ -45,10 +45,11 @@ class User(db.Model, UserMixin):
         return self.pw_hash
 
     def __repr__(self):
-        return f'User {self.email} has been added to the database'
+        return f'User {self.email}'
     
 
 class Car(db.Model):
+    user_token = db.Column(db.String)
     id = db.Column(db.String, primary_key = True)
     nickname = db.Column(db.String(150), default = '')
     make = db.Column(db.String(150), default = '')
@@ -56,7 +57,8 @@ class Car(db.Model):
     prodyear = db.Column(db.Integer)
     mileage = db.Column(db.Integer, default = 0)
 
-    def __init__(self, nickname='', make='', model='', prodyear='', mileage=0):
+    def __init__(self, user_token, nickname='', make='', model='', prodyear='', mileage=0):
+        self.user_token = user_token
         self.id = self.set_id()
         self.nickname = nickname 
         self.make = make
