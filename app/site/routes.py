@@ -1,4 +1,5 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect
+from flask_login import current_user
 
 site = Blueprint('site', __name__, template_folder='site_templates')
 
@@ -8,4 +9,10 @@ def landing():
 
 @site.route('/profile')
 def profile():
-    return render_template('profile.html')
+    # check if there is a user currently logged in
+    if current_user.is_authenticated:
+        # if user is logged in, direct them to /profile
+        return render_template('profile.html')
+    else:
+        # otherwise, redirect them to the landing page
+        return redirect('/')
