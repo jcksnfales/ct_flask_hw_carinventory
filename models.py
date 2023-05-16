@@ -68,7 +68,7 @@ class Car(db.Model):
         return secrets.token_urlsafe()
     
     def __repr__(self):
-        return f'The {prodyear} {make} {model} "{nickname}" has been added to the database'
+        return f'The {self.prodyear} {self.make} {self.model} "{self.nickname}" has been added to the database'
     
 class CarSchema(ma.Schema):
     class Meta:
