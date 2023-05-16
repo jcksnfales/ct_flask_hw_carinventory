@@ -47,6 +47,29 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         return f'User {self.email} has been added to the database'
     
+
+class Car(db.Model):
+    id = db.Column(db.String, primary_key = True)
+    nickname = db.Column(db.String(150), default = '')
+    make = db.Column(db.String(150), default = '')
+    model = db.Column(db.String(150), default = '')
+    prodyear = db.Column(db.Integer)
+    mileage = db.Column(db.Integer, default = 0)
+
+    def __init__(self, nickname='', make='', model='', prodyear='', mileage=0):
+        self.id = self.set_id()
+        self.nickname = nickname 
+        self.make = make
+        self.model = model 
+        self.prodyear = prodyear
+        self.mileage = mileage
+
+    def set_id(self):
+        return str(uuid.uuid4())
+    
+    def __repr__(self):
+        return f'The {prodyear} {make} {model} "{nickname}" has been added to the database'
+    
 # class Contact(db.Model):
 #     id = db.Column(db.String, primary_key = True)
 #     name = db.Column(db.String(150), nullable = False)
