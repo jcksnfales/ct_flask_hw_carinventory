@@ -65,10 +65,17 @@ class Car(db.Model):
         self.mileage = mileage
 
     def set_id(self):
-        return str(uuid.uuid4())
+        return secrets.token_urlsafe()
     
     def __repr__(self):
         return f'The {prodyear} {make} {model} "{nickname}" has been added to the database'
+    
+class CarSchema(ma.Schema):
+    class Meta:
+        fields = ['id', 'nickname', 'make', 'model', 'prodyear', 'mileage']
+
+car_schema = CarSchema()
+cars_schema = CarSchema(many=True)
     
 # class Contact(db.Model):
 #     id = db.Column(db.String, primary_key = True)
