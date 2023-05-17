@@ -70,7 +70,11 @@ class Car(db.Model):
         return secrets.token_urlsafe()
     
     def __repr__(self):
-        return f'The {self.prodyear} {self.make} {self.model} "{self.nickname}" has been added to the database'
+        # using a list comprehension, get a combined string of the non-null values for prodyear, make, and model 
+        car_identity = ' '.join([str(field) for field in [self.prodyear, self.make, self.model] if field])
+        # if this car has no nickname, just return car_identity;
+        # otherwise, return the nickname in quotes followed by car_identity
+        return car_identity if not self.nickname else f'"{self.nickname}" {car_identity}'
     
 class CarSchema(ma.Schema):
     class Meta:
