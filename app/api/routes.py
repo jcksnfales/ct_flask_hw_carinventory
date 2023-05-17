@@ -25,5 +25,12 @@ def add_car(current_user_token):
 @api.route('/cars', methods=['GET'])
 @token_required
 def get_contact(current_user_token):
-    cars = Car.query.filter_by(user_token=current_user_token.token).all()
-    return jsonify(cars_schema.dump(cars))
+    current_cars = Car.query.filter_by(user_token=current_user_token.token).all()
+    return jsonify(cars_schema.dump(current_cars))
+
+# GET SPECIFIC CAR
+@api.route('/cars/<id>', methods=['GET'])
+@token_required
+def get_contact_from_id(current_user_token, id):
+    current_car = Car.query.get(id)
+    return jsonify(car_schema.dump(current_car))
