@@ -41,7 +41,7 @@ def get_from_id(current_user_token, id):
 def update_id(current_user_token, id):
     # find car by id
     updated_car = Car.query.get(id)
-    # check car's recorded user_token against given user token
+    # check car's recorded user_token against given current_user_token
     if current_user_token.token == updated_car.user_token:
         # if user tokens match, update the data
         updated_car.nickname = request.json['nickname']
@@ -49,8 +49,23 @@ def update_id(current_user_token, id):
         updated_car.model = request.json['model']
         updated_car.prodyear = request.json['prodyear']
         updated_car.mileage = request.json['mileage']
-        # then return the data of the changed car
         return jsonify(car_schema.dump(updated_car))
+    else:
+        # if user tokens do not match, return user an error message
+        return jsonify({'message': 'Given car does not belong to given access token'})
+    
+# DELETE CAR
+@api.route('/cars/<id>', methods=['DELETE'])
+@token_required
+def update_id(current_user_token, id):
+    # find car by id
+    deleted_car = Car.query.get(id)
+    # check car's recorded user_token against given current_user_token
+    if current_user_token.token == deleted_car.user_token:
+        # if user tokens match, delete the car 
+        db.session.delete(deleted_car)
+        db.session.commit()
+        return jsonify(car_schema.dump(deleted_car))
     else:
         # if user tokens do not match, return user an error message
         return jsonify({'message': 'Given car does not belong to given access token'})
