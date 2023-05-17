@@ -57,7 +57,7 @@ def update_id(current_user_token, id):
 # DELETE CAR
 @api.route('/cars/<id>', methods=['DELETE'])
 @token_required
-def update_id(current_user_token, id):
+def delete_id(current_user_token, id):
     # find car by id
     deleted_car = Car.query.get(id)
     # check car's recorded user_token against given current_user_token
