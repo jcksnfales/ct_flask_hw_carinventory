@@ -2,10 +2,13 @@
 
 {% block content %}
 <div class="container w-75" id="page-content">
+    <!-- HEADER TEXT -->
     <header class="row mt-2 py-1 text-center">
         <div class="col-12 px-0 h4">User Info</div>
     </header>
+    <!-- FLASHED MESSAGES -->
     {% include 'flashes.html' %}
+    <!-- USER PROFILE DETAILS -->
     <section class="row mt-3">
         <ul class="list-group col-12 col-md-11 col-lg-8 col-xl-7 mx-auto ps-1 pe-0">
             <li class="list-group-item"><strong>Email:</strong> {{ current_user.email }}</li>
