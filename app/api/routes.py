@@ -32,8 +32,15 @@ def get_all(current_user_token):
 @api.route('/cars/<id>', methods=['GET'])
 @token_required
 def get_from_id(current_user_token, id):
+    # find car by id
     current_car = Car.query.get(id)
-    return jsonify(car_schema.dump(current_car))
+    # check car's recorded user_token against given current_user_token
+    if current_user_token.token == current_car.user_token:
+        # if user tokens match, return the car's data
+        return jsonify(car_schema.dump(current_car))
+    else:
+        # if user tokens do not match, return user an error message
+        return jsonify({'message': 'Given car does not belong to given access token'})
 
 # POST/PUT CAR
 @api.route('/cars/<id>', methods=['POST','PUT'])
