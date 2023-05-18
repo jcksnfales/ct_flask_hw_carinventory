@@ -26,7 +26,7 @@ def add_car(current_user_token):
 @token_required
 def get_all(current_user_token):
     current_cars = Car.query.filter_by(user_token=current_user_token.token).all()
-    return jsonify(cars_schema.dump(current_cars))
+    return jsonify(cars_schema.dump(current_cars)) if current_cars else jsonify({'message': 'You have no cars. Add one with a POST request and a JSON string like the given example.','example':{'nickname': '','make': '','model': '','prodyear': 2023,'mileage': 1}})
 
 # GET SPECIFIC CAR
 @api.route('/cars/<id>', methods=['GET'])
@@ -40,9 +40,9 @@ def get_from_id(current_user_token, id):
         return jsonify(car_schema.dump(current_car))
     else:
         # if user tokens do not match, return user an error message
-        return jsonify({'message': 'Given car does not belong to given access token'})
+        return jsonify({'message': f'Given car {id} does not belong to given access token'})
 
-# POST/PUT CAR
+# UPDATE CAR
 @api.route('/cars/<id>', methods=['POST','PUT'])
 @token_required
 def update_id(current_user_token, id):
@@ -59,7 +59,7 @@ def update_id(current_user_token, id):
         return jsonify(car_schema.dump(updated_car))
     else:
         # if user tokens do not match, return user an error message
-        return jsonify({'message': 'Given car does not belong to given access token'})
+        return jsonify({'message': f'Given car {id} does not belong to given access token'})
     
 # DELETE CAR
 @api.route('/cars/<id>', methods=['DELETE'])
@@ -75,4 +75,4 @@ def delete_id(current_user_token, id):
         return jsonify(car_schema.dump(deleted_car))
     else:
         # if user tokens do not match, return user an error message
-        return jsonify({'message': 'Given car does not belong to given access token'})
+        return jsonify({'message': f'Given car {id} does not belong to given access token'})
