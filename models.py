@@ -22,11 +22,11 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(150), nullable=True, default='')
     last_name = db.Column(db.String(150), nullable=True, default='')
     email = db.Column(db.String(150), nullable=False)
-    password = db.Column(db.String, nullable=True, default = '')
+    password = db.Column(db.String, nullable=True, default='')
     token = db.Column(db.String, default='', unique=True )
-    date_created = db.Column(db.DateTime, nullable=False, default = datetime.utcnow)
+    date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
-    def __init__(self, email, first_name='', last_name='', password='', token=''):
+    def __init__(self, email, first_name='', last_name='', password=''):
         self.id = self.set_id()
         self.first_name = first_name
         self.last_name = last_name
@@ -70,11 +70,11 @@ class Car(db.Model):
         return secrets.token_urlsafe()
     
     def __repr__(self):
-        # using a list comprehension, get a combined string of the non-null values for prodyear, make, and model 
+        # using a list comprehension, get a combined string of the non-null values for prodyear, make, and model
         car_identity = ' '.join([str(field) for field in [self.prodyear, self.make, self.model] if field])
         # if this car has no nickname, just return car_identity;
         # otherwise, return the nickname in quotes followed by car_identity
-        return car_identity if not self.nickname else f'"{self.nickname}" {car_identity}'
+        return car_identity if not self.nickname else f'"{self.nickname}", {car_identity}'
     
 class CarSchema(ma.Schema):
     class Meta:
