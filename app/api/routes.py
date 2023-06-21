@@ -56,6 +56,8 @@ def update_id(current_user_token, id):
         updated_car.model = request.json['model']
         updated_car.prodyear = request.json['prodyear']
         updated_car.mileage = request.json['mileage']
+        
+        db.session.commit()
         return jsonify(car_schema.dump(updated_car))
     else:
         # if user tokens do not match, return user an error message
